@@ -27,7 +27,7 @@ net['Conv2'] = slim.conv2d(net['MaxPool1'], 64, [5,5])
 net['MaxPool2'] = slim.max_pool2d(net['Conv2'], [2,2])
 net['flatten'] = slim.flatten(net['MaxPool2'])
 net['dropout'] = slim.dropout(net['flatten'], 0.8)
-net['output'] = slim.fully_connected(net['dropout'], 10)
+net['output'] = slim.fully_connected(net['dropout'], 10, activation_fn=None)
 
 cross_entropy_loss = tf.reduce_mean(losses.softmax_cross_entropy(net['output'], output))
 
